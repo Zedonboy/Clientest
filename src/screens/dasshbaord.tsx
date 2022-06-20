@@ -43,7 +43,7 @@ const userNavigation = [
   { name: "Sign out", href: "#" },
 ];
 
-function classNames(...classes) {
+function classNames(...classes : any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -278,7 +278,7 @@ export default function Dashboard() {
 
                   <button
                   onClick={e => {
-                    eventbus.dispatch("formcreate.opendialog")
+                    eventbus.dispatch("formcreate.opendialog", null)
                   }}
                     type="button"
                     className="flex bg-indigo-600 p-1 rounded-full items-center justify-center text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

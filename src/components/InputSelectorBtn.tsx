@@ -33,7 +33,7 @@ export default function InputSelectorBtn(props : IProps) {
             <input
             onChange={
               e => {
-                props?.onSelect(!selected)
+                props?.onSelect?.(!selected)
                 setSelected(!selected)
               }
             }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import InputSelectorBtn from "../components/InputSelectorBtn";
 import Modal from "../components/Modal";
-import eventbus from "../utils/event.js";
+import eventbus from "../utils/event";
 import { FormInput } from "../utils/types";
 const inputypes = [
   {
@@ -30,19 +30,20 @@ export default function FormCreate() {
   const [showInputModal, setShowInputModal] = useState(false);
   const [formInputs, setFormInput] = useState([]);
   useEffect(() => {
-    eventbus.on("formcreate.opendialog", () => {
+    let handler = () => {
       setShowInputModal(true);
-    });
+    }
+    eventbus.on("formcreate.opendialog", handler);
 
     return () => {
-      eventbus.remove("formcreate.opendialog");
+      eventbus.remove("formcreate.opendialog", handler);
     };
   });
   return (
     <div className="p-6 md:p-24 flex flex-col">
       {showInputModal ? (
         <Modal
-          onClose={(e) => {
+          onClose={() => {
             setShowInputModal(false);
           }}
         >

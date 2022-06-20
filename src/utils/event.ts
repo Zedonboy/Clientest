@@ -1,11 +1,13 @@
 const evenbus = {
-  on(event, callback) {
+  on(event : string, callback : any) {
+    //@ts-ignore
     document.addEventListener(event, (e) => callback(e.detail));
   },
-  dispatch(event, data) {
+  dispatch(event : string, data : any) {
     document.dispatchEvent(new CustomEvent(event, { detail: data }));
   },
-  remove(event, callback) {
+  remove(event : string, callback : any
+    ) {
     document.removeEventListener(event, callback);
   },
 };
